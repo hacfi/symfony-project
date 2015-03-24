@@ -4,6 +4,9 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
+parameters:
+    locale: "en"
+
 framework:
     esi:
         enabled: false
@@ -34,8 +37,8 @@ twig:
 
 doctrine:
     dbal:
-        driver:         "%database_driver%"
-        #server_version: "%database_server_version%"
+        driver:         "pdo_mysql"
+        #server_version: "5.6.23"
         host:           "%database_host%"
         port:           "%database_port%"
         dbname:         "%database_name%"
@@ -49,8 +52,8 @@ doctrine:
         naming_strategy: "doctrine.orm.naming_strategy.underscore"
 
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
+    transport: "gmail"
+    host:      "smtp.gmail.com"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:

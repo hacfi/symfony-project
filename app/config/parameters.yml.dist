@@ -5,6 +5,9 @@ parameters:
     database_user:     "root"
     database_password: "root"
 
+    debug_toolbar:     true
+    debug_redirects:   false
+
     email_dev:         "a@gmail.com"
 
     mailer_user:       ~
