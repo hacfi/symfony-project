@@ -9,30 +9,30 @@ framework:
         only_exceptions: false
 
 web_profiler:
-    toolbar: true
-    intercept_redirects: false
+    toolbar: "%debug_toolbar%"
+    intercept_redirects: "%debug_redirects%"
 
 monolog:
     handlers:
         main:
-            type:   stream
+            type:   "stream"
             path:   "%kernel.logs_dir%/%kernel.environment%.log"
-            level:  debug
+            level:  "debug"
         console:
-            type:   console
+            type:   "console"
             bubble: false
             verbosity_levels:
-                VERBOSITY_VERBOSE: INFO
-                VERBOSITY_VERY_VERBOSE: DEBUG
+                VERBOSITY_VERBOSE: "INFO"
+                VERBOSITY_VERY_VERBOSE: "DEBUG"
             channels: ["!doctrine"]
         console_very_verbose:
-            type:   console
+            type:   "console"
             bubble: false
             verbosity_levels:
-                VERBOSITY_VERBOSE: NOTICE
-                VERBOSITY_VERY_VERBOSE: NOTICE
-                VERBOSITY_DEBUG: DEBUG
+                VERBOSITY_VERBOSE: "NOTICE"
+                VERBOSITY_VERY_VERBOSE: "NOTICE"
+                VERBOSITY_DEBUG: "DEBUG"
             channels: ["doctrine"]
 
-#swiftmailer:
-#    delivery_address: me@example.com
+swiftmailer:
+    delivery_address: "%email_dev%"

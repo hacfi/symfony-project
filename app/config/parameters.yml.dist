@@ -1,15 +1,13 @@
 parameters:
-    database_driver:   pdo_mysql
-    database_host:     127.0.0.1
+    database_host:     "127.0.0.1"
     database_port:     ~
-    database_name:     ~
-    database_user:     root
-    database_password: ~
+    database_name:     ""
+    database_user:     "root"
+    database_password: "root"
 
-    mailer_transport:  smtp
-    mailer_host:       127.0.0.1
+    email_dev:         "@gmail.com"
+
     mailer_user:       ~
     mailer_password:   ~
 
-    locale:            en
-    secret:            enter_random_secret_here
+    secret:            "enter_random_secret_here"
