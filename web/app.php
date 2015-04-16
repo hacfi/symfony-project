@@ -13,7 +13,6 @@ if (SYMFONY_DEBUG) {
 }
 
 require_once __DIR__.'/../app/AppKernel.php';
-//require_once __DIR__.'/../app/AppCache.php';
 
 if (SYMFONY_DEBUG) {
     Debug::enable();
@@ -25,6 +24,13 @@ if (!SYMFONY_DEBUG
     || (!isset($_REQUEST['XDEBUG_SESSION_START']) && !isset($_COOKIE['XDEBUG_SESSION']) && ini_get('xdebug.remote_autostart') == false))
 {
     $kernel->loadClassCache();
+}
+
+if (SYMFONY_ENV !== 'dev') {
+    require_once __DIR__.'/../app/AppCache.php';
+    $kernel = new AppCache($kernel);
+
+    Request::enableHttpMethodParameterOverride();
 }
 
 $request = Request::createFromGlobals();
