@@ -1,0 +1,9 @@
+parameters:
+#    param: value
+
+services:
+#    app.:
+#        class: App\
+#        arguments:
+#            - "@service_container"
+#            - "%param%"

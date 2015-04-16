@@ -1,7 +1,5 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
-    - { resource: services.yml }
 
 parameters:
     locale: "en"
@@ -9,12 +7,9 @@ parameters:
 framework:
     esi:
         enabled: false
-    #translator:
-    #    fallbacks: ["%locale%"]
+    translator:
+        fallbacks: ["%locale%"]
     secret:          "%secret%"
-    router:
-        resource: "%kernel.root_dir%/config/routing.yml"
-        strict_requirements: ~
     form:            ~
     csrf_protection: ~
     validation:

@@ -12,25 +12,18 @@ if (SYMFONY_DEBUG) {
     require_once __DIR__.'/../var/bootstrap.php.cache';
 }
 
-require_once __DIR__.'/../app/AppKernel.php';
+require_once __DIR__.'/../app/AdminKernel.php';
 
 if (SYMFONY_DEBUG) {
     Debug::enable();
 }
 
-$kernel = new AppKernel(SYMFONY_ENV, SYMFONY_DEBUG);
+$kernel = new AdminKernel(SYMFONY_ENV, SYMFONY_DEBUG);
 if (!SYMFONY_DEBUG
     || !extension_loaded('xdebug')
     || (!isset($_REQUEST['XDEBUG_SESSION_START']) && !isset($_COOKIE['XDEBUG_SESSION']) && ini_get('xdebug.remote_autostart') == false))
 {
     $kernel->loadClassCache();
-}
-
-if (SYMFONY_ENV !== 'dev') {
-    require_once __DIR__.'/../app/AppCache.php';
-    $kernel = new AppCache($kernel);
-
-    Request::enableHttpMethodParameterOverride();
 }
 
 $request = Request::createFromGlobals();
