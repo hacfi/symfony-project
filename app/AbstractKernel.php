@@ -91,7 +91,7 @@ abstract class AbstractKernel extends Kernel
      */
     public function getLogDir()
     {
-        return $this->rootDir.'/../var/logs/'.$this->getContext().'/'.$this->getEnvironment();
+        return $this->rootDir.'/../var/logs/'.$this->getContext();
     }
 
     /**
@@ -132,6 +132,6 @@ abstract class AbstractKernel extends Kernel
      */
     private function setContext($context)
     {
-        $this->context = $context;
+        $this->context = $this->name = $context;
     }
 }
