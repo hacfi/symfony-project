@@ -1,38 +1,38 @@
 imports:
-    - { resource: config.yml }
+    - { resource: 'config.yml' }
 
 framework:
     router:
-        resource: "%kernel.root_dir%/config/api/routing_dev.yml"
+        resource: '%kernel.root_dir%/config/api/routing_dev.yml'
         strict_requirements: true
     profiler:
         only_exceptions: false
 
 web_profiler:
-    toolbar: "%debug_toolbar%"
-    intercept_redirects: "%debug_redirects%"
+    toolbar: '%debug_toolbar%'
+    intercept_redirects: '%debug_redirects%'
 
 monolog:
     handlers:
         main:
-            type:   "stream"
-            path:   "%kernel.logs_dir%/%kernel.environment%.log"
-            level:  "debug"
+            type:   'stream'
+            path:   '%kernel.logs_dir%/%kernel.environment%.log'
+            level:  'debug'
         console:
-            type:   "console"
+            type:   'console'
             bubble: false
             verbosity_levels:
-                VERBOSITY_VERBOSE: "INFO"
-                VERBOSITY_VERY_VERBOSE: "DEBUG"
-            channels: ["!doctrine"]
+                VERBOSITY_VERBOSE: 'INFO'
+                VERBOSITY_VERY_VERBOSE: 'DEBUG'
+            channels: ['!doctrine']
         console_very_verbose:
-            type:   "console"
+            type:   'console'
             bubble: false
             verbosity_levels:
-                VERBOSITY_VERBOSE: "NOTICE"
-                VERBOSITY_VERY_VERBOSE: "NOTICE"
-                VERBOSITY_DEBUG: "DEBUG"
-            channels: ["doctrine"]
+                VERBOSITY_VERBOSE: 'NOTICE'
+                VERBOSITY_VERY_VERBOSE: 'NOTICE'
+                VERBOSITY_DEBUG: 'DEBUG'
+            channels: ['doctrine']
 
 swiftmailer:
-    delivery_address: "%email_dev%"
+    delivery_address: '%email_dev%'

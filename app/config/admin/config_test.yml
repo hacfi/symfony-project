@@ -1,10 +1,10 @@
 imports:
-    - { resource: config_dev.yml }
+    - { resource: 'config_dev.yml' }
 
 framework:
     test: ~
     session:
-        storage_id: "session.storage.mock_file"
+        storage_id: 'session.storage.mock_file'
     profiler:
         enabled: false
 
@@ -17,4 +17,4 @@ swiftmailer:
 
 #doctrine:
 #    dbal:
-#        dbname: "%database_name%_test"
+#        dbname: '%database_name%_test'

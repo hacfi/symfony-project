@@ -50,6 +50,13 @@ abstract class AbstractKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+
+            new JMS\AopBundle\JMSAopBundle(),
+            new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
+            new JMS\DiExtraBundle\JMSDiExtraBundle($this),
+            new JMS\SerializerBundle\JMSSerializerBundle(),
+
+            new App\Bundle\CoreBundle\AppCoreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {

@@ -1,10 +1,72 @@
 imports:
-    - { resource: ../config.yml }
-    - { resource: security.yml }
-    - { resource: services.yml }
+    - { resource: '../config.yml' }
+    - { resource: 'security.yml' }
+    - { resource: 'services.yml' }
 
 framework:
     router:
-        resource: "%kernel.root_dir%/config/api/routing.yml"
+        resource: '%kernel.root_dir%/config/api/routing.yml'
         strict_requirements: ~
 
+sensio_framework_extra:
+    router:
+        annotations: true
+    request:
+        converters: true
+        auto_convert: true
+    view:
+        annotations: false # To use FOSRestBundle annotations
+    cache:
+        annotations: true
+    security:
+        annotations: true
+
+fos_rest:
+    format_listener:
+        rules:
+            - { path: '^/auth', priorities: ['json'], fallback_format: 'json', prefer_extension: false }
+            - { path: '^/user', priorities: ['json'], fallback_format: 'json', prefer_extension: false }
+            - { path: '^/', priorities: ['html'], fallback_format: 'html', prefer_extension: false }
+    view:
+        view_response_listener: 'force'
+        formats:
+            json: true
+            xml: false
+    routing_loader:
+        default_format: 'json'
+        include_format: false
+    access_denied_listener:
+        json: true
+    serializer:
+        groups:
+            - 'default'
+        serialize_null: true
+
+lexik_jwt_authentication:
+    private_key_path: '%kernel.root_dir%/Resources/jwt/private.pem'
+    public_key_path:  '%kernel.root_dir%/Resources/jwt/public.pem'
+    pass_phrase:      '%jwt_pass_phase%'
+    token_ttl:        86400
+
+nelmio_cors:
+    defaults:
+        allow_credentials: true
+        allow_origin: ['*'] # ['http://api.domain.tld']
+        allow_headers: ['accept', 'authorization', 'cache-control', 'content-type', 'cookie', 'dnt', 'if-modified-since', 'if-none-match', 'origin', 'pragma', 'x-requested-with']
+        allow_methods: []
+        expose_headers: ['date', 'location', 'x-request-id']
+        max_age: 0
+        hosts: []
+    paths:
+        '^/auth/login':
+            allow_methods: ['POST', 'OPTIONS']
+            max_age: 3600
+        '^/auth/ping':
+            allow_methods: ['GET', 'POST', 'OPTIONS']
+            max_age: 3600
+        '^/auth/register':
+            allow_methods: ['POST', 'OPTIONS']
+            max_age: 3600
+#        '^/users':
+#            allow_methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+#            max_age: 3600

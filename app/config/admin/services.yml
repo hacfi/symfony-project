@@ -1,9 +1,9 @@
 parameters:
-#    param: "value"
+#    param: 'value'
 
 services:
 #    app.:
-#        class: "App\"
+#        class: 'App\'
 #        arguments:
-#            - "@service_container"
-#            - "%param%"
+#            - '@service_container'
+#            - '%param%'

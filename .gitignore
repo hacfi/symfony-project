@@ -1,9 +1,10 @@
-/web/bundles/
+/app/config/config.local.yml
 /app/config/parameters.yml
+/app/Resources/jwt/*.pem
 /var/bootstrap.php.cache
 /var/cache/*
 /var/logs/*
 !var/cache/.gitkeep
 !var/logs/.gitkeep
-/app/phpunit.xml
 /vendor/
+/web/bundles/

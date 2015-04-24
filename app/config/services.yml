@@ -1,9 +1,24 @@
 parameters:
-#    param: "value"
+    app.model.user.class: 'App\Model\User'
+#    param: 'value'
 
 services:
+    app.user_repository:
+        class: 'App\Repository\UserRepository'
+        factory_service: 'doctrine'
+        factory_method: 'getRepository'
+        arguments:
+            - '%app.model.user.class%'
+
+    app.user_password_encoder:
+        class: 'Symfony\Component\Security\Core\Encoder\PasswordEncoderInterface'
+        factory_service: 'security.encoder_factory'
+        factory_method: 'getEncoder'
+        arguments:
+            - '%app.model.user.class%'
+
 #    app.:
-#        class: "App\"
+#        class: 'App\'
 #        arguments:
-#            - "@service_container"
-#            - "%param%"
+#            - '@service_container'
+#            - '%param%'

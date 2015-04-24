@@ -15,15 +15,8 @@ class AdminKernel extends AbstractKernel
 
 //        array_push(
 //            $bundles,
-//            //new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle()
+//            //new App\Bundle\AdminBundle\AppAdminBundle()
 //        );
-
-        if (in_array($this->getEnvironment(), ['dev', 'test'])) {
-//            array_push(
-//                $bundles,
-//                new Symfony\Bundle\DebugBundle\DebugBundle()
-//            );
-        }
 
         return $bundles;
     }

@@ -1,54 +1,76 @@
 imports:
-    - { resource: parameters.yml }
+    - { resource: 'parameters.yml' }
 
 parameters:
-    locale: "en"
+    locale: 'en'
 
 framework:
     esi:
         enabled: false
     translator:
-        fallbacks: ["%locale%"]
-    secret:          "%secret%"
+        fallbacks: ['%locale%']
+    secret:          '%secret%'
     form:            ~
     csrf_protection: ~
     validation:
         enable_annotations: true
     templating:
-        engines: ["twig"]
-    default_locale:  "%locale%"
+        engines: ['twig']
+    default_locale:  '%locale%'
     trusted_hosts:   ~
     trusted_proxies: ~
     session:
         handler_id: ~
-        name:       "s"
+        name:       's'
     fragments:       ~
     http_method_override: true
 
 twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
+    debug:            '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
 
 doctrine:
     dbal:
-        driver:         "pdo_mysql"
-        #server_version: "5.6.23"
-        host:           "%database_host%"
-        port:           "%database_port%"
-        dbname:         "%database_name%"
-        user:           "%database_user%"
-        password:       "%database_password%"
-        charset:        "UTF8"
+        driver:         'pdo_mysql'
+        #server_version: '5.6.23'
+        host:           '%database_host%'
+        port:           '%database_port%'
+        dbname:         '%database_name%'
+        user:           '%database_user%'
+        password:       '%database_password%'
+        charset:        'UTF8'
+        types:
+            datetime: 'App\Util\DBAL\Types\UTCDateTimeType'
 
     orm:
-        auto_generate_proxy_classes: "%kernel.debug%"
+        auto_generate_proxy_classes: '%kernel.debug%'
         auto_mapping: true
-        naming_strategy: "doctrine.orm.naming_strategy.underscore"
+        naming_strategy: 'doctrine.orm.naming_strategy.underscore'
+        mappings:
+            entities:
+                mapping: true
+                type: 'annotation'
+                dir: '%kernel.root_dir%/../src/App/Model'
+                prefix: 'App\Model'
+                alias: 'Model'
+                is_bundle: false
+
+jms_di_extra:
+    locations:
+        all_bundles: false
+        bundles: []
+        directories: ['%kernel.root_dir%/../src']
+
+jms_serializer:
+    handlers:
+        datetime:
+            default_format:   'Y-m-d\TH:i:sO'
+            default_timezone: 'UTC'
 
 swiftmailer:
-    transport: "gmail"
-    host:      "smtp.gmail.com"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
+    transport: 'gmail'
+    host:      'smtp.gmail.com'
+    username:  '%mailer_user%'
+    password:  '%mailer_password%'
     spool:
-        type: "memory"
+        type: 'memory'

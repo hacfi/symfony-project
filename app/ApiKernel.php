@@ -13,10 +13,12 @@ class ApiKernel extends AbstractKernel
     {
         $bundles = parent::registerBundles();
 
-//        array_push(
-//            $bundles,
-//            //new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle()
-//        );
+        array_push(
+            $bundles,
+            new FOS\RestBundle\FOSRestBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
+            new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle()
+        );
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
 //            array_push(
