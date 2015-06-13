@@ -3,7 +3,7 @@
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Debug\Debug;
 
-$env = getenv('APP_ENVIRONMENT') ?: 'prod';
+$env = getenv('APP_ENV') ?: 'prod';
 $debug = getenv('APP_DEBUG') ? (bool) getenv('APP_DEBUG') : $env === 'dev';
 $xdebug = extension_loaded('xdebug') && (isset($_REQUEST['XDEBUG_SESSION_START']) || isset($_COOKIE['XDEBUG_SESSION']));
 
