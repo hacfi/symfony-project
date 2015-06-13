@@ -1,0 +1,63 @@
+imports:
+    - { resource: 'parameters.yml' }
+    - { resource: 'security.yml' }
+    - { resource: 'services.yml' }
+
+parameters:
+    locale: 'en'
+
+framework:
+    esi:
+        enabled: false
+    translator:
+        fallbacks:
+            - '%locale%'
+    secret: '%secret%'
+    router:
+        resource: '%kernel.root_dir%/config/routing.yml'
+        strict_requirements: ~
+    form: ~
+    csrf_protection: ~
+    validation:
+        enable_annotations: true
+    #serializer:
+    #    enable_annotations: true
+    templating:
+        engines:
+            - 'twig'
+    default_locale: '%locale%'
+    trusted_hosts: ~
+    trusted_proxies: ~
+    session:
+        handler_id: ~
+        #name: ''
+    fragments: ~
+    http_method_override: true
+
+twig:
+    debug: '%kernel.debug%'
+    strict_variables: '%kernel.debug%'
+
+doctrine:
+    dbal:
+        driver: 'pdo_mysql'
+        #server_version: '5.6.23'
+        host: '%database_host%'
+        port: '%database_port%'
+        dbname: '%database_name%'
+        user: '%database_user%'
+        password: '%database_password%'
+        charset: 'UTF8'
+
+    orm:
+        auto_generate_proxy_classes: '%kernel.debug%'
+        naming_strategy: 'doctrine.orm.naming_strategy.underscore'
+        auto_mapping: true
+
+swiftmailer:
+    transport: 'gmail'
+    host: 'smtp.gmail.com'
+    username: '%mailer_user%'
+    password: '%mailer_password%'
+    spool:
+        type: 'memory'

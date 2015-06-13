@@ -1,0 +1,16 @@
+parameters:
+    database_host: '127.0.0.1'
+    database_port: ~
+    database_name: ''
+    database_user: 'root'
+    database_password: 'root'
+
+    debug_toolbar: true
+    debug_redirects: false
+
+    email_dev: 'you@gmail.com'
+
+    mailer_user: ~
+    mailer_password: ~
+
+    secret: 'enter_random_secret_here'

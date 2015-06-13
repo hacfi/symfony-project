@@ -1,0 +1,16 @@
+security:
+    providers:
+        in_memory:
+            memory: ~
+
+    firewalls:
+        dev:
+            pattern: '^/(_(profiler|wdt|error))/'
+            security: false
+
+        static:
+            pattern: '^/(css|images|img|fonts|js)/'
+            security: false
+
+        main:
+            anonymous: ~

@@ -1,0 +1,10 @@
+/app/config/parameters.yml
+/bin/*
+!bin/console
+/var/bootstrap.php.cache
+/var/cache/*
+!var/cache/.gitkeep
+/var/logs/*
+!var/logs/.gitkeep
+/vendor/
+/web/bundles/
